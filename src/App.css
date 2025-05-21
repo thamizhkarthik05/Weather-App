@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* 
+{
+  font-family:  "Marcellus SC", serif;
+}
+
+body
+{
+  margin: 0;
+  padding: 0;
+  background-color: #2f3640;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.temp, .humidity-percent, .wind-speed, .text
+{
+  font-family: "Roboto", sans-serif;
+}
+
+.cord div span:nth-child(2)
+{
+  font-family:"Roboto", sans-serif;
+}
+
+.container
+{
+  width: 350px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.input-container
+{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border: 1px solid skyblue;
+  border-radius: 10px;
+  overflow: hidden;
+
+}
+
+.search-icon img
+{
+  width: 25px;
+  height: 25px;
+  padding: 10px;
+  margin: 2px;
+}
+
+.search-icon
+{
+  cursor: pointer;
+}
+
+.cityInput
+{
+  flex: 1;
+  height: 30px;
+  border: none;
+  font-size: 20px;
+  outline: none;
+  padding: 10px
+}
+
+.image
+{
+   text-align: center;
+   height: 150px;
+   margin-bottom: 20px;
+   margin-top: 20px;
+}
+
+.image img
+{
+  width: 160px;
+  height: 160px;
+
+}
+
+.temp, .location, .country
+{
+   margin-top: 5px;
+   font-size: 35px;
+   text-align: center;
+   text-transform: uppercase;
+   color: #333;
+}
+
+.temp
+{
+  font-weight: 600;
+}
+
+.location
+{
+  color: steelblue;
+  font-weight: 900;
+  font-size: 40px;
+}
+
+.country
+{
+  font-size: 18px;
+  color: #888;
+  font-weight: 500;
+}
+
+.cord
+{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.cord div
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.cord div span
+{
+  font-size: 14px
+}
+
+.cord div span:nth-child(2)
+{
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+  padding-top: 5px;
+}
+
+.cord div span:nth-child(1)
+{
+  font-size: 15px;
+}
+
+.data-container
+{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.element
+{
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.icon
+{
+  height: 50px;
+  width: 50px;
+}
+
+.copyright
+{
+  text-align: center;
+  font-size: 12px;
+  font-family:  "Roboto", sans-serif;
+  color: #888;
+}
+
+.copyright b
+{
+   color: #333;
+   font-family: "Roboto", sans-serif;
+}
+
+
+.city-not-found, .loading-message, .error-message
+{
+  margin-top: 10px;
+  color: black;
+  font-size: 25px;
+  font-weight: 400;
+  text-align: center;
+}
