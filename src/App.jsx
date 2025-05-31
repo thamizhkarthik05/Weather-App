@@ -61,12 +61,24 @@ const WeatherDetails = ({icon , temp , city , country , lat , log , humidity , w
    ); 
 }
 
+const clearWeatherData = () => {
+  setHumidity(0);
+  setWind(0);
+  setTemp(0);
+  setCity("");
+  setCountry("");
+  setLat(0);
+  setLog(0);
+  setIcon(clearIcon);  // Or any default placeholder icon
+};
+
+
 function App() {
 
   let api_url = "8f1cf5ec47b6635d198494f7aafb1a34";
   const[text,setText] = useState("Chennai");
-
-  const[icon,setIcon] = useState(clearIcon);
+  
+  const[icon,setIcon] =   useState(clearIcon);
   const[temp,setTemp] = useState(0);
   const[city,setCity] = useState('Chennai');
   const[country,setCountry] = useState('IN');
@@ -108,6 +120,8 @@ function App() {
   const search = async() => 
   {
     setLoading(true);
+    setError(null);          
+    setCityNotFound(false);
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${text}&appid=8f1cf5ec47b6635d198494f7aafb1a34&units=Metric`;
     
     
@@ -121,6 +135,7 @@ function App() {
           console.error("City Not Found");
           setCityNotFound(true);
           setLoading(false);
+          clearWeatherData();
           return;
         }
       
@@ -143,6 +158,7 @@ function App() {
     {
       console.error("An Error Occurred : ",error.message);
       setError("Error occurred while fetching the data"); 
+      clearWeatherData();
     }
     finally
     {
@@ -193,7 +209,18 @@ function App() {
           {error && <div className="error-message">{error}</div>}
           {cityNotFound && <div className="city-not-found">City Not Found</div>}
 
-          {!loading && !cityNotFound && <WeatherDetails icon={icon} temp={temp} city={city} country={country} lat={lat} log={log} humidity={humidity} wind={wind}/>}
+          {!loading && !cityNotFound && !error && (
+            <WeatherDetails
+              icon={icon}
+              temp={temp}
+              city={city}
+              country={country}
+              lat={lat}
+              log={log}
+              humidity={humidity}
+              wind={wind}
+            />          
+          )}
           
           <p className='copyright'>
               Designed by <b>Kaarthik</b>
