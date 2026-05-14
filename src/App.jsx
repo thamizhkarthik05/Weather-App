@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css';
 
+import { Helmet } from "react-helmet";
+
 import searchIcon from './assets/search.png';
 import humidityIcon from './assets/humidity.png';
 import windIcon from './assets/wind.png';
@@ -19,6 +21,21 @@ const WeatherDetails = ({icon , temp , city , country , lat , log , humidity , w
 {
    return(
     <>
+      <Helmet>
+        <title>Air Casty | Live Weather App</title>
+
+        <meta
+          name="description"
+          content="Check live weather forecast, humidity, wind speed, and temperature updates."
+        />
+
+        <meta
+          name="keywords"
+          content="weather app, react weather app, live weather"
+        />
+      </Helmet>
+
+
        <div className='image'>
           <img src={icon} alt="ClearIcon"/>
        </div>
@@ -78,6 +95,8 @@ function App() {
   let api_url = "8f1cf5ec47b6635d198494f7aafb1a34";
   const[text,setText] = useState("Chennai");
   
+const [previousSearches, setPreviousSearches] = useState([]);
+
   const[icon,setIcon] =   useState(clearIcon);
   const[temp,setTemp] = useState(0);
   const[city,setCity] = useState('Chennai');
@@ -151,6 +170,11 @@ function App() {
       console.log(weatherIcon);
       setIcon(weatherIconMap[weatherIcon]);
       setCityNotFound(false);
+
+      setPreviousSearches(prev => {
+        const updated = [data.name, ...prev.filter(city => city !== data.name)];
+        return updated.slice(0, 3); // Keep only last 3 unique cities
+      });
       
       
     }
@@ -194,6 +218,7 @@ function App() {
     <>
       <div className='container'>
           <div className='input-container'>
+            
             
             <input type="text" className='cityInput' placeholder='Search City' onChange={handleText} value={text} onKeyDown={handleKeyDown}/>
 
